@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shower Ritual</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f4ff;
+      color: #333;
+    }
+
+    .player-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #5e2b97;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .playlist {
+      margin-bottom: 30px;
+    }
+
+    .playlist h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #7e3ff2;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      margin-bottom: 6px;
+      background-color: #f0e6ff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    li:hover {
+      background-color: #d9bfff;
+    }
+
+    li.active {
+      background-color: #7e3ff2;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .player-container {
+        padding: 15px;
+      }
+
+      li {
+        font-size: 0.95rem;
+      }
+
+      .logo img {
+        max-width: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player-container">
+    <div class="logo">
+      <!-- Replace src with your actual logo image -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSbuxGZTnika_a5VNWeKR9wjnhw417V-RBg&s" alt="Logo" />
+    </div>
+
+    <h2>Shower Ritual</h2>
+
+    <audio id="audioPlayer" controls>
+      <source src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="playlist" id="playlistA">
+      <h3>Morning Shower Ritual</h3>
+      <ul>
+        <li data-src="https://bjalodia.github.io/sr/1.mp3">Track A1 - Intro Song</li>
+        <li data-src="https://bjalodia.github.io/sr/2.mp3">Track A2 - Chill Vibes</li>
+      </ul>
+    </div>
+
+    <div class="playlist" id="playlistB">
+      <h3>Evening Shower Ritual</h3>
+      <ul>
+        <li data-src="https://yourserver.com/music/track3.mp3">Track B1 - Uplift</li>
+        <li data-src="https://yourserver.com/music/track4.mp3">Track B2 - Night Ride</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const player = document.getElementById('audioPlayer');
+    const trackItems = document.querySelectorAll('li[data-src]');
+
+    trackItems.forEach(item => {
+      item.addEventListener('click', () => {
+        trackItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        player.src = item.getAttribute('data-src');
+        player.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
